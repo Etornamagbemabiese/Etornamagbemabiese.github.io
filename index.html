@@ -12,6 +12,10 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <!-- Custom Styles -->
     <style>
         :root {
@@ -23,6 +27,7 @@
         body {
             font-family: 'Inter', sans-serif;
             color: var(--color-text);
+            scroll-behavior: smooth;
         }
         
         h1, h2, h3, h4, h5, h6 {
@@ -32,6 +37,18 @@
         .nav-scrolled {
             background: white;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .section-padding {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+
+        @media (min-width: 768px) {
+            .section-padding {
+                padding-top: 6rem;
+                padding-bottom: 6rem;
+            }
         }
     </style>
 </head>
@@ -43,9 +60,11 @@
                 <img src="Logo.png" alt="Zellit Logo" class="h-14 w-auto">
             </div>
             <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="hover:text-gray-600">Home</a>
                 <a href="#about" class="hover:text-gray-600">About</a>
+                <a href="#features" class="hover:text-gray-600">Features</a>
                 <a href="#team" class="hover:text-gray-600">Team</a>
-                <a href="#mission" class="hover:text-gray-600">Why Zellit</a>
+                <a href="#mission" class="hover:text-gray-600">Mission</a>
                 <a href="#contact" class="hover:text-gray-600">Contact</a>
             </div>
             <button class="md:hidden">
@@ -57,15 +76,14 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="hero" class="min-h-[85vh] flex items-center justify-center pt-[72px] px-4 md:px-8 relative overflow-hidden">
-        <!-- Optional: Abstract background blob -->
+    <section id="home" class="min-h-[80vh] flex items-center justify-center pt-[72px] px-4 md:px-8 relative overflow-hidden">
         <div class="absolute inset-0 z-0 opacity-10">
             <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" class="absolute -top-1/2 -right-1/2 w-[800px] h-[800px]">
                 <path fill="#DCD6CC" d="M400 0C179.9 0 0 179.9 0 400s179.9 400 400 400 400-179.9 400-400S620.1 0 400 0zm0 700c-165.7 0-300-134.3-300-300S234.3 100 400 100s300 134.3 300 300-134.3 300-300 300z"/>
             </svg>
         </div>
 
-        <div class="container mx-auto max-w-4xl text-center relative z-10">
+        <div class="container mx-auto max-w-4xl text-center relative z-10" data-aos="fade-up">
             <span class="inline-block bg-[#ECECEC] text-sm px-4 py-1 rounded-full mb-6 font-medium">🚀 Coming Soon</span>
             
             <h1 class="text-3xl md:text-[42px] font-bold mb-6 text-[#333333] leading-tight">
@@ -79,15 +97,24 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-16 md:py-24 bg-white">
+    <section id="about" class="section-padding bg-white" data-aos="fade-up">
         <div class="container mx-auto px-6 md:px-16 max-w-[1200px]">
             <h2 class="text-2xl md:text-[32px] font-bold text-center text-[#333333] mb-6">
                 What is Zellit?
             </h2>
             
-            <p class="text-base md:text-lg text-gray-600 max-w-[700px] mx-auto text-center mb-16">
+            <p class="text-base md:text-lg text-gray-600 max-w-[650px] mx-auto text-center">
                 Zellit is a mobile-first marketplace built exclusively for college students. By requiring .edu email verification and geofencing each campus, Zellit creates a trusted, student-only environment to buy and sell everything from textbooks to dorm furniture. It's Craigslist, reinvented for Gen Z — safer, simpler, and made just for your school.
             </p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section-padding bg-[#f8f8f8]" data-aos="fade-up">
+        <div class="container mx-auto px-6 md:px-16 max-w-[1200px]">
+            <h2 class="text-2xl md:text-[32px] font-bold text-center text-[#333333] mb-12">
+                Key Features
+            </h2>
 
             <div class="grid md:grid-cols-3 gap-6 md:gap-8">
                 <!-- Feature 1: Verified Access -->
@@ -126,14 +153,14 @@
         </div>
     </section>
 
-    <!-- Founders Section -->
-    <section id="team" class="py-16 md:py-24 bg-[#f8f8f8]">
+    <!-- Team Section -->
+    <section id="team" class="section-padding bg-white" data-aos="fade-up">
         <div class="container mx-auto px-6 md:px-16 max-w-6xl">
             <h2 class="text-2xl md:text-3xl font-bold text-center text-[#333333] mb-4">
                 Meet the Founders
             </h2>
             <p class="text-base md:text-lg text-gray-600 text-center max-w-2xl mx-auto mb-12">
-                Zellit was built by UNC students who wanted a safer, smarter way to resell on campus. From code to campus flyers — this team does it all.
+                Zellit was built by students who wanted a safer, smarter way to resell on campus. From code to campus flyers — this team does it all.
             </p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -215,8 +242,8 @@
         </div>
     </section>
 
-    <!-- Why Zellit Section -->
-    <section id="mission" class="mission-section bg-[#eaeaea] py-20">
+    <!-- Mission Section -->
+    <section id="mission" class="section-padding bg-[#eaeaea]" data-aos="fade-up">
         <div class="container max-w-5xl mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold mb-6 text-[#333333]">Why We Built Zellit</h2>
 
@@ -227,7 +254,7 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contact" class="bg-[#f2f2f2] py-12">
+    <footer id="contact" class="bg-white py-12">
         <div class="container mx-auto px-4 md:px-8">
             <div class="grid md:grid-cols-3 gap-8">
                 <div>
@@ -253,13 +280,19 @@
                 </div>
             </div>
             <div class="mt-12 pt-8 border-t border-gray-200 text-center text-gray-500">
-                © 2025 Zellit. Built with ❤️ by students at UNC Chapel Hill.
+                © 2025 Zellit. Built with ❤️ by students.
             </div>
         </div>
     </footer>
 
     <!-- JavaScript -->
     <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
         // Header scroll effect
         window.addEventListener('scroll', function() {
             const header = document.getElementById('mainHeader');
@@ -268,32 +301,6 @@
             } else {
                 header.classList.remove('nav-scrolled');
             }
-        });
-
-        // Enhanced form validation with better UX
-        document.querySelectorAll('form').forEach(form => {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = this.querySelector('input[type="email"]').value;
-                const messageDiv = this.querySelector('#form-message');
-                
-                if (email.endsWith('.edu')) {
-                    // Here you would typically send the email to your backend
-                    messageDiv.textContent = "Thanks! You're on the list.";
-                    messageDiv.className = 'mt-4 text-sm text-green-600';
-                    messageDiv.classList.remove('hidden');
-                    this.reset();
-                    
-                    // Hide message after 5 seconds
-                    setTimeout(() => {
-                        messageDiv.classList.add('hidden');
-                    }, 5000);
-                } else {
-                    messageDiv.textContent = "Please enter a valid .edu email address.";
-                    messageDiv.className = 'mt-4 text-sm text-red-600';
-                    messageDiv.classList.remove('hidden');
-                }
-            });
         });
     </script>
 </body>

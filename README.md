@@ -1,73 +1,46 @@
-# Zellit Landing Page
+# Getting Started with Create React App
 
-A modern, responsive landing page for Zellit - The Student-Only Campus Marketplace.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## 🚀 Features
+## Available Scripts
 
-- Mobile-first, responsive design
-- Clean, modern UI with neutral color scheme
-- Email waitlist collection with .edu validation
-- Smooth scroll navigation
-- Sticky header with scroll effect
-- Semantic HTML5 structure
-- Built with TailwindCSS for rapid development
+In the project directory, you can run:
 
-## 🛠️ Tech Stack
+### `npm start`
 
-- HTML5
-- TailwindCSS (via CDN)
-- Google Fonts (Poppins & Inter)
-- Vanilla JavaScript
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## 📱 Responsive Design
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-- Mobile-first approach
-- Breakpoints:
-  - Mobile: < 768px
-  - Tablet/Desktop: ≥ 768px
-- Fluid typography and spacing
-- Stack layout on mobile, grid on desktop
+### `npm test`
 
-## 🎨 Design System
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### Colors
-- Background: #f9f9f9
-- Text: #333333
-- Accent: #DCD6CC
-- Button: #dddddd
-- Card Background: #f7f7f7
+### `npm run build`
 
-### Typography
-- Headings: Poppins (700)
-- Body: Inter (400-500)
-- Base sizes:
-  - H1: 42px (desktop) / 28px (mobile)
-  - Body: 16-18px
-  - Small: 14px
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## 🚀 Getting Started
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-1. Clone the repository
-2. Open `index.html` in your browser
-3. No build process required - using TailwindCSS via CDN
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## 📝 Form Integration
+### `npm run eject`
 
-The waitlist form is ready to be connected to your preferred email collection service (Mailchimp, ConvertKit, etc.). The current implementation includes:
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-- .edu email validation
-- Form submission handling
-- Success/error messages
-- Mobile-responsive layout
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-## 🔧 Customization
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-To customize the design:
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-1. Colors: Update the CSS variables in the `<style>` section
-2. Content: Modify the HTML structure
-3. Styling: Adjust Tailwind classes or add custom CSS
+## Learn More
 
-## 📄 License
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-© 2025 Zellit. All rights reserved. 
+To learn React, check out the [React documentation](https://reactjs.org/).
