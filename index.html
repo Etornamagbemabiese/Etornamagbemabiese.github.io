@@ -60,9 +60,9 @@
 <body class="bg-[#F9FAFB]">
     <!-- Header/Navigation -->
     <header class="fixed w-full z-50 transition-all duration-300 bg-white bg-opacity-90 backdrop-blur-sm" id="mainHeader">
-        <nav class="container mx-auto px-0 md:px-4 h-[100px] flex items-center justify-between">
-            <div class="flex items-center -ml-8 md:-ml-16">
-                <img src="Logo.png" alt="Zellit Logo" class="h-24 w-auto">
+        <nav class="container mx-auto px-0 md:px-4 h-[80px] md:h-[100px] flex items-center justify-between">
+            <div class="flex items-center md:-ml-16 w-full md:w-auto justify-center md:justify-start">
+                <img src="Logo.png" alt="Zellit Logo" class="h-16 md:h-24 w-auto">
             </div>
             <div class="hidden md:flex items-center space-x-10">
                 <a href="#home" class="text-[#4B5563] hover:text-[#2563EB] transition-colors text-lg">Home</a>
@@ -72,22 +72,27 @@
                 <a href="#mission" class="text-[#4B5563] hover:text-[#2563EB] transition-colors text-lg">Mission</a>
                 <a href="#contact" class="text-[#4B5563] hover:text-[#2563EB] transition-colors text-lg">Contact</a>
             </div>
-            <button class="md:hidden text-[#4B5563]">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <button class="md:hidden text-[#4B5563] p-2" id="mobileMenuButton">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
         </nav>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white w-full absolute top-[80px] left-0 shadow-lg" id="mobileMenu">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="#home" class="text-[#4B5563] hover:text-[#2563EB] transition-colors text-lg py-2">Home</a>
+                <a href="#about" class="text-[#4B5563] hover:text-[#2563EB] transition-colors text-lg py-2">About</a>
+                <a href="#features" class="text-[#4B5563] hover:text-[#2563EB] transition-colors text-lg py-2">Features</a>
+                <a href="#team" class="text-[#4B5563] hover:text-[#2563EB] transition-colors text-lg py-2">Team</a>
+                <a href="#mission" class="text-[#4B5563] hover:text-[#2563EB] transition-colors text-lg py-2">Mission</a>
+                <a href="#contact" class="text-[#4B5563] hover:text-[#2563EB] transition-colors text-lg py-2">Contact</a>
+            </div>
+        </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center pt-[100px] px-6 md:px-12 relative overflow-hidden">
-        <div class="absolute inset-0 z-0 opacity-10">
-            <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" class="absolute -top-1/2 -right-1/2 w-[800px] h-[800px]">
-                <path fill="#2563EB" d="M400 0C179.9 0 0 179.9 0 400s179.9 400 400 400 400-179.9 400-400S620.1 0 400 0zm0 700c-165.7 0-300-134.3-300-300S234.3 100 400 100s300 134.3 300 300-134.3 300-300 300z"/>
-            </svg>
-        </div>
-
+    <section id="home" class="min-h-screen flex items-center justify-center pt-[80px] md:pt-[100px] px-6 md:px-12 relative overflow-hidden">
         <div class="container mx-auto max-w-4xl text-center relative z-10" data-aos="fade-up">
             <h2 class="text-7xl md:text-[120px] font-bold mb-8 text-[#1F2937] tracking-tight">Zellit</h2>
             
@@ -347,6 +352,22 @@
                 header.classList.remove('nav-scrolled');
                 scrollIndicator.style.opacity = '1';
             }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
         });
     </script>
 </body>
