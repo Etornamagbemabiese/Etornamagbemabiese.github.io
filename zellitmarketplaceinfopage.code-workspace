@@ -1,10 +1,12 @@
 {
 	"folders": [
 		{
-			"path": "."
+			"name": "UI DESIGNS",
+			"path": "../Documents/UI DESIGNS"
 		},
 		{
-			"path": "../Documents/UI DESIGNS"
+			"name": "zellitmarketplaceinfopage",
+			"path": "."
 		}
 	],
 	"settings": {}
