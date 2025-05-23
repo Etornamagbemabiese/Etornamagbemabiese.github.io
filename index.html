@@ -27,6 +27,7 @@
             --color-background: #F9FAFB;
             --color-background-alt: #F3F4F6;
             --color-border: #E5E7EB;
+            --color-accent: #98d2c0;
         }
         
         body {
@@ -55,6 +56,36 @@
                 padding-bottom: 6rem;
             }
         }
+
+        /* Hide scrollbar but keep functionality */
+        .scrollbar-hide {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;  /* Chrome, Safari and Opera */
+        }
+
+        /* Snap scrolling */
+        .snap-x {
+            scroll-snap-type: x mandatory;
+        }
+        .snap-center {
+            scroll-snap-align: center;
+        }
+
+        /* Accent color utility classes */
+        .bg-accent {
+            background-color: var(--color-accent) !important;
+        }
+        .text-accent {
+            color: var(--color-accent) !important;
+        }
+
+        /* Vertical positioning for specific screens */
+        .screen-position-adjust {
+            transform: translateY(40px);
+        }
     </style>
 </head>
 <body class="bg-[#F9FAFB]">
@@ -62,7 +93,7 @@
     <header class="fixed w-full z-50 transition-all duration-300 bg-white bg-opacity-90 backdrop-blur-sm" id="mainHeader">
         <nav class="container mx-auto px-0 md:px-4 h-[80px] md:h-[100px] flex items-center justify-between">
             <div class="flex items-center md:-ml-16 w-full md:w-auto justify-center md:justify-start">
-                <img src="Logo.png" alt="Zellit Logo" class="h-16 md:h-24 w-auto">
+                <img src="logo4.png" alt="Zellit Logo" class="h-16 md:h-24 w-auto">
             </div>
             <div class="hidden md:flex items-center space-x-10">
                 <a href="#home" class="text-[#4B5563] hover:text-[#2563EB] transition-colors text-lg">Home</a>
@@ -130,9 +161,7 @@
     <!-- Features Section -->
     <section id="features" class="section-padding bg-[#F9FAFB]" data-aos="fade-up">
         <div class="container mx-auto px-6 md:px-16 max-w-[1200px]">
-            <h2 class="text-2xl md:text-[32px] font-bold text-center text-[#1F2937] mb-12">
-                Key Features
-            </h2>
+            <h2 class="text-2xl md:text-[32px] font-bold text-center text-[#1F2937] mb-12 border-b-4 border-[var(--color-accent)] inline-block pb-2">Key Features</h2>
 
             <div class="grid md:grid-cols-3 gap-6 md:gap-8">
                 <!-- Feature 1: Verified Access -->
@@ -174,26 +203,134 @@
     <!-- Prototype Showcase Section -->
     <section class="py-20 bg-white">
         <div class="container mx-auto px-6 md:px-16 max-w-[1200px]">
-            <h2 class="text-2xl md:text-[32px] font-bold text-center text-[#1F2937] mb-4">
-                See Zellit in Action
-            </h2>
-            <p class="text-base md:text-lg text-[#4B5563] text-center max-w-2xl mx-auto mb-12">
+            <h2 class="text-2xl md:text-[32px] font-bold text-center text-[#1F2937] mb-4 border-b-4 border-[var(--color-accent)] inline-block pb-2">See Zellit in Action</h2>
+            <p class="text-base md:text-lg text-[#4B5563] text-center max-w-2xl mx-auto mb-8">
                 Get a sneak peek at our student-friendly marketplace app. Simple, secure, and made just for campus life.
             </p>
 
-            <div class="grid md:grid-cols-3 gap-8 items-center">
-                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="0">
-                    <img src="ListDemo.png" alt="Zellit App Screenshot - List View" class="w-full max-w-[300px] rounded-2xl shadow-lg mb-4">
-                    <p class="text-sm text-center text-[#4B5563]">View detailed info about a used textbook, including safety tips, tags, and seller details.</p>
+            <!-- University Selection Dropdown -->
+            <div class="flex justify-center mb-8">
+                <select id="universitySelect" class="px-4 py-2 rounded-lg border-2 border-[var(--color-accent)] text-[#1F2937] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent bg-white">
+                    <option value="unc">UNC Chapel Hill</option>
+                    <option value="duke">Duke University</option>
+                    <option value="ncsu">NC State University</option>
+                </select>
+            </div>
+
+            <!-- Scrollable Gallery Container -->
+            <div class="relative">
+                <!-- Left Arrow -->
+                <button id="scrollLeft" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-accent rounded-full p-2 shadow-lg hover:bg-[#7fcbb2] transition-colors">
+                    <svg class="w-6 h-6 text-[#4B5563]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+
+                <!-- Gallery Container -->
+                <div id="galleryContainer" class="overflow-x-auto scrollbar-hide flex gap-6 px-12 py-4 snap-x snap-mandatory">
+                    <!-- UNC Screenshots -->
+                    <div class="university-gallery unc-gallery flex gap-6 min-w-full">
+                        <div class="flex-shrink-0 w-[300px] snap-center screen-position-adjust">
+                            <img src="/Users/etornam/Documents/UI DESIGNS/UNC/UNC-MAIN.png" alt="UNC Main Screen" class="w-full rounded-2xl shadow-lg">
+                            <p class="text-sm text-center mt-2 text-[#4B5563]">Main Screen</p>
+                        </div>
+                        <div class="flex-shrink-0 w-[300px] snap-center screen-position-adjust">
+                            <img src="/Users/etornam/Documents/UI DESIGNS/UNC/UNC-LOGIN.png" alt="UNC Login Screen" class="w-full rounded-2xl shadow-lg">
+                            <p class="text-sm text-center mt-2 text-[#4B5563]">Login Screen</p>
+                        </div>
+                        <div class="flex-shrink-0 w-[300px] snap-center">
+                            <img src="/Users/etornam/Documents/UI DESIGNS/UNC/UNC-HOME.png" alt="UNC Home Screen" class="w-full rounded-2xl shadow-lg">
+                            <p class="text-sm text-center mt-2 text-[#4B5563]">Home Screen</p>
+                        </div>
+                        <div class="flex-shrink-0 w-[300px] snap-center">
+                            <img src="/Users/etornam/Documents/UI DESIGNS/UNC/UNC-PRODUCT.png" alt="UNC Product Screen" class="w-full rounded-2xl shadow-lg">
+                            <p class="text-sm text-center mt-2 text-[#4B5563]">Product View</p>
+                        </div>
+                        <div class="flex-shrink-0 w-[300px] snap-center screen-position-adjust">
+                            <img src="/Users/etornam/Documents/UI DESIGNS/UNC/UNC-PROFILE.png" alt="UNC Profile Screen" class="w-full rounded-2xl shadow-lg">
+                            <p class="text-sm text-center mt-2 text-[#4B5563]">Profile</p>
+                        </div>
+                        <div class="flex-shrink-0 w-[300px] snap-center">
+                            <img src="/Users/etornam/Documents/UI DESIGNS/UNC/UNC-WISHLIST.png" alt="UNC Wishlist Screen" class="w-full rounded-2xl shadow-lg">
+                            <p class="text-sm text-center mt-2 text-[#4B5563]">Wishlist</p>
+                        </div>
+                        <div class="flex-shrink-0 w-[300px] snap-center screen-position-adjust">
+                            <img src="/Users/etornam/Documents/UI DESIGNS/UNC/UNC-MESSAGE.png" alt="UNC Message Screen" class="w-full rounded-2xl shadow-lg">
+                            <p class="text-sm text-center mt-2 text-[#4B5563]">Messages</p>
+                        </div>
+                    </div>
+
+                    <!-- Duke Screenshots -->
+                    <div class="university-gallery duke-gallery hidden flex gap-6 min-w-full">
+                        <div class="flex-shrink-0 w-[300px] snap-center screen-position-adjust">
+                            <img src="/Users/etornam/Documents/UI DESIGNS/DUKE/DUKE-MAIN.png" alt="Duke Main Screen" class="w-full rounded-2xl shadow-lg">
+                            <p class="text-sm text-center mt-2 text-[#4B5563]">Main Screen</p>
+                        </div>
+                        <div class="flex-shrink-0 w-[300px] snap-center screen-position-adjust">
+                            <img src="/Users/etornam/Documents/UI DESIGNS/DUKE/DUKE-LOGIN.png" alt="Duke Login Screen" class="w-full rounded-2xl shadow-lg">
+                            <p class="text-sm text-center mt-2 text-[#4B5563]">Login Screen</p>
+                        </div>
+                        <div class="flex-shrink-0 w-[300px] snap-center">
+                            <img src="/Users/etornam/Documents/UI DESIGNS/DUKE/DUKE-HOME.png" alt="Duke Home Screen" class="w-full rounded-2xl shadow-lg">
+                            <p class="text-sm text-center mt-2 text-[#4B5563]">Home Screen</p>
+                        </div>
+                        <div class="flex-shrink-0 w-[300px] snap-center">
+                            <img src="/Users/etornam/Documents/UI DESIGNS/DUKE/DUKE-PRODUCT.png" alt="Duke Product Screen" class="w-full rounded-2xl shadow-lg">
+                            <p class="text-sm text-center mt-2 text-[#4B5563]">Product View</p>
+                        </div>
+                        <div class="flex-shrink-0 w-[300px] snap-center screen-position-adjust">
+                            <img src="/Users/etornam/Documents/UI DESIGNS/DUKE/DUKE-PROFILE.png" alt="Duke Profile Screen" class="w-full rounded-2xl shadow-lg">
+                            <p class="text-sm text-center mt-2 text-[#4B5563]">Profile</p>
+                        </div>
+                        <div class="flex-shrink-0 w-[300px] snap-center">
+                            <img src="/Users/etornam/Documents/UI DESIGNS/DUKE/DUKE-WISHLIST.png" alt="Duke Wishlist Screen" class="w-full rounded-2xl shadow-lg">
+                            <p class="text-sm text-center mt-2 text-[#4B5563]">Wishlist</p>
+                        </div>
+                        <div class="flex-shrink-0 w-[300px] snap-center screen-position-adjust">
+                            <img src="/Users/etornam/Documents/UI DESIGNS/DUKE/DUKE-MESSAGE.png" alt="Duke Message Screen" class="w-full rounded-2xl shadow-lg">
+                            <p class="text-sm text-center mt-2 text-[#4B5563]">Messages</p>
+                        </div>
+                    </div>
+
+                    <!-- NCSU Screenshots -->
+                    <div class="university-gallery ncsu-gallery hidden flex gap-6 min-w-full">
+                        <div class="flex-shrink-0 w-[300px] snap-center screen-position-adjust">
+                            <img src="/Users/etornam/Documents/UI DESIGNS/NCSU/NCSU-MAIN.png" alt="NCSU Main Screen" class="w-full rounded-2xl shadow-lg">
+                            <p class="text-sm text-center mt-2 text-[#4B5563]">Main Screen</p>
+                        </div>
+                        <div class="flex-shrink-0 w-[300px] snap-center screen-position-adjust">
+                            <img src="/Users/etornam/Documents/UI DESIGNS/NCSU/NCSU-LOGIN.png" alt="NCSU Login Screen" class="w-full rounded-2xl shadow-lg">
+                            <p class="text-sm text-center mt-2 text-[#4B5563]">Login Screen</p>
+                        </div>
+                        <div class="flex-shrink-0 w-[300px] snap-center">
+                            <img src="/Users/etornam/Documents/UI DESIGNS/NCSU/NCSU-HOME.png" alt="NCSU Home Screen" class="w-full rounded-2xl shadow-lg">
+                            <p class="text-sm text-center mt-2 text-[#4B5563]">Home Screen</p>
+                        </div>
+                        <div class="flex-shrink-0 w-[300px] snap-center">
+                            <img src="/Users/etornam/Documents/UI DESIGNS/NCSU/NCSU-PRODUCT.png" alt="NCSU Product Screen" class="w-full rounded-2xl shadow-lg">
+                            <p class="text-sm text-center mt-2 text-[#4B5563]">Product View</p>
+                        </div>
+                        <div class="flex-shrink-0 w-[300px] snap-center screen-position-adjust">
+                            <img src="/Users/etornam/Documents/UI DESIGNS/NCSU/NCSU-PROFILE.png" alt="NCSU Profile Screen" class="w-full rounded-2xl shadow-lg">
+                            <p class="text-sm text-center mt-2 text-[#4B5563]">Profile</p>
+                        </div>
+                        <div class="flex-shrink-0 w-[300px] snap-center">
+                            <img src="/Users/etornam/Documents/UI DESIGNS/NCSU/NCSU-WISHLIST.png" alt="NCSU Wishlist Screen" class="w-full rounded-2xl shadow-lg">
+                            <p class="text-sm text-center mt-2 text-[#4B5563]">Wishlist</p>
+                        </div>
+                        <div class="flex-shrink-0 w-[300px] snap-center screen-position-adjust">
+                            <img src="/Users/etornam/Documents/UI DESIGNS/NCSU/NCSU-MESSAGE.png" alt="NCSU Message Screen" class="w-full rounded-2xl shadow-lg">
+                            <p class="text-sm text-center mt-2 text-[#4B5563]">Messages</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="100">
-                    <img src="PostDemo.png" alt="Zellit App Screenshot - Post View" class="w-full max-w-[300px] rounded-2xl shadow-lg mb-4">
-                    <p class="text-sm text-center text-[#4B5563]">Start posting an item by uploading photos to create a new listing.</p>
-                </div>
-                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200">
-                    <img src="MarketplaceDemo.png" alt="Zellit App Screenshot - Marketplace View" class="w-full max-w-[300px] rounded-2xl shadow-lg mb-4">
-                    <p class="text-sm text-center text-[#4B5563]">Browse and filter campus marketplace listings by category and price.</p>
-                </div>
+
+                <!-- Right Arrow -->
+                <button id="scrollRight" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-accent rounded-full p-2 shadow-lg hover:bg-[#7fcbb2] transition-colors">
+                    <svg class="w-6 h-6 text-[#4B5563]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
             </div>
         </div>
     </section>
@@ -202,7 +339,7 @@
     <section class="py-16 bg-white border-b border-[#E5E7EB]">
         <div class="container mx-auto px-4 md:px-8">
             <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
-                <h2 class="text-2xl md:text-3xl font-bold mb-8 text-[#1F2937]">Coming to Your Campus Soon</h2>
+                <h2 class="text-2xl md:text-3xl font-bold mb-8 text-[#1F2937] border-b-4 border-[var(--color-accent)] inline-block pb-2">Coming to Your Campus Soon</h2>
                 <div class="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
                     <div class="flex items-center gap-4 bg-[#F9FAFB] px-6 py-4 rounded-xl">
                         <svg class="w-8 h-8 text-[#2563EB]" viewBox="0 0 24 24" fill="currentColor">
@@ -230,9 +367,7 @@
     <!-- Team Section -->
     <section id="team" class="section-padding bg-[#F9FAFB]" data-aos="fade-up">
         <div class="container mx-auto px-6 md:px-16 max-w-6xl">
-            <h2 class="text-2xl md:text-3xl font-bold text-center text-[#1F2937] mb-4">
-                Meet the Founders
-            </h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-[#1F2937] mb-4 border-b-4 border-[var(--color-accent)] inline-block pb-2">Meet the Founders</h2>
             <p class="text-base md:text-lg text-[#4B5563] text-center max-w-2xl mx-auto mb-12">
                 Zellit was built by students who wanted a safer, smarter way to resell on campus. From code to campus flyers — this team does it all.
             </p>
@@ -318,7 +453,7 @@
     <!-- Mission Section -->
     <section id="mission" class="section-padding bg-white" data-aos="fade-up">
         <div class="container max-w-5xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-6 text-[#1F2937]">Why We Built Zellit</h2>
+            <h2 class="text-3xl font-bold mb-6 text-[#1F2937] border-b-4 border-[var(--color-accent)] inline-block pb-2">Why We Built Zellit</h2>
 
             <p class="text-lg text-[#4B5563] max-w-2xl mx-auto mb-12">
                 College students today are stuck using outdated, fragmented resale options — from sketchy Craigslist posts to spammy Facebook groups. It's risky, it's inconvenient, and it's not made for Gen Z. We created Zellit to fix all of that.
@@ -327,18 +462,18 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contact" class="bg-[#F9FAFB] py-12">
+    <footer id="contact" class="bg-[#F9FAFB] py-12 border-t-4 border-[var(--color-accent)]">
         <div class="container mx-auto px-4 md:px-8">
             <div class="grid md:grid-cols-3 gap-8">
                 <div>
-                    <img src="Logo.png" alt="Zellit Logo" class="h-12 w-auto mb-4">
+                    <img src="logo4.png" alt="Zellit Logo" class="h-60 w-auto mb-4">
                 </div>
                 <div class="md:col-span-2">
                     <div class="grid md:grid-cols-2 gap-8">
                         <div>
                             <h3 class="font-bold mb-4 text-[#1F2937]">Contact</h3>
-                            <a href="mailto:zellitmarketplace@gmail.com" class="text-[#4B5563] hover:text-[#2563EB] block mb-2">zellitmarketplace@gmail.com</a>
-                            <a href="https://instagram.com/zellitmarketplace" target="_blank" class="text-[#4B5563] hover:text-[#2563EB] flex items-center gap-2">
+                            <a href="mailto:zellitmarketplace@gmail.com" class="text-[#4B5563] hover:text-accent block mb-2">zellitmarketplace@gmail.com</a>
+                            <a href="https://instagram.com/zellitmarketplace" target="_blank" class="text-[#4B5563] hover:text-accent flex items-center gap-2">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                                     <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"/>
                                 </svg>
@@ -347,7 +482,7 @@
                         </div>
                         <div>
                             <h3 class="font-bold mb-4 text-[#1F2937]">Legal</h3>
-                            <a href="#" class="text-[#4B5563] hover:text-[#2563EB]">Privacy Policy</a>
+                            <a href="#" class="text-[#4B5563] hover:text-accent">Privacy Policy</a>
                         </div>
                     </div>
                 </div>
@@ -394,6 +529,48 @@
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
             });
+        });
+
+        // Gallery Navigation
+        const universitySelect = document.getElementById('universitySelect');
+        const galleries = document.querySelectorAll('.university-gallery');
+        const galleryContainer = document.getElementById('galleryContainer');
+        const scrollLeftBtn = document.getElementById('scrollLeft');
+        const scrollRightBtn = document.getElementById('scrollRight');
+
+        // University selection handler
+        universitySelect.addEventListener('change', (e) => {
+            const selectedUniversity = e.target.value;
+            galleries.forEach(gallery => {
+                gallery.classList.add('hidden');
+                if (gallery.classList.contains(`${selectedUniversity}-gallery`)) {
+                    gallery.classList.remove('hidden');
+                }
+            });
+        });
+
+        // Scroll buttons handler
+        scrollLeftBtn.addEventListener('click', () => {
+            galleryContainer.scrollBy({
+                left: -300,
+                behavior: 'smooth'
+            });
+        });
+
+        scrollRightBtn.addEventListener('click', () => {
+            galleryContainer.scrollBy({
+                left: 300,
+                behavior: 'smooth'
+            });
+        });
+
+        // Hide scroll buttons when at the start/end
+        galleryContainer.addEventListener('scroll', () => {
+            const isAtStart = galleryContainer.scrollLeft === 0;
+            const isAtEnd = galleryContainer.scrollLeft + galleryContainer.clientWidth >= galleryContainer.scrollWidth;
+            
+            scrollLeftBtn.style.opacity = isAtStart ? '0.5' : '1';
+            scrollRightBtn.style.opacity = isAtEnd ? '0.5' : '1';
         });
     </script>
 </body>
