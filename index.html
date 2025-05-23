@@ -10,7 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&family=Nunito:wght@600&display=swap" rel="stylesheet">
     
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -106,17 +106,17 @@
         .modern-header .nav-link:hover::after {
             content: '';
             position: absolute;
-            left: 20%;
-            right: 20%;
+            left: 0;
+            right: 0;
             bottom: 0.3rem;
             height: 2px;
             background: var(--color-primary);
             border-radius: 2px;
-            opacity: 0.7;
+            opacity: 0.9;
         }
         .modern-header .nav-link:hover {
             color: var(--color-primary);
-            background: rgba(255,255,255,0.18);
+            background: rgba(152,210,192,0.10);
         }
         .modern-header .logo {
             height: 3.75rem;
@@ -137,17 +137,68 @@
         .modern-header .modern-hamburger:hover {
             background: rgba(255,255,255,0.32);
         }
+
+        .hero-gradient {
+            background: linear-gradient(180deg, #98D2C0 0%, #FFFAED 100%);
+        }
+
+        .sleek-mobile-menu {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border-radius: 0 0 1.5rem 1.5rem;
+            box-shadow: 0 8px 32px 0 rgba(0,0,0,0.12);
+            transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.25s;
+            transform: translateY(-24px);
+            opacity: 0;
+            pointer-events: none;
+        }
+        .sleek-mobile-menu.open {
+            transform: translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .sleek-mobile-menu a {
+            font-weight: 600;
+            font-size: 1.15rem;
+            border-radius: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            margin: 0.25rem 0;
+            transition: background 0.2s, color 0.2s;
+            display: block;
+            text-align: center;
+        }
+        .sleek-mobile-menu a:hover {
+            background: rgba(152, 210, 192, 0.18);
+            color: var(--color-primary);
+        }
+        .sleek-mobile-menu .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1.25rem;
+            background: rgba(152, 210, 192, 0.18);
+            border: none;
+            border-radius: 50%;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .sleek-mobile-menu .close-btn:hover {
+            background: rgba(152, 210, 192, 0.32);
+        }
     </style>
 </head>
 <body class="bg-[#FFFAED]">
     <!-- Header/Navigation -->
     <header class="fixed w-full z-50 modern-header" id="mainHeader">
-        <nav class="container mx-auto px-0 md:px-4 h-[80px] md:h-[100px] grid grid-cols-3 items-center">
-            <div class="md:hidden"></div>
-            <div class="flex items-center justify-center md:justify-start md:col-span-1">
+        <nav class="container mx-auto px-6 md:px-12 h-[80px] md:h-[100px] grid grid-cols-3 items-center">
+            <div class="flex items-center justify-start">
                 <img src="logo4.png" alt="Zellit Logo" class="logo">
             </div>
-            <div class="hidden md:flex items-center space-x-4 col-span-2 md:col-span-1 justify-end">
+            <div class="hidden md:flex items-center space-x-4 justify-center">
                 <a href="#home" class="nav-link text-lg text-[#1F2937]">Home</a>
                 <a href="#about" class="nav-link text-lg text-[#1F2937]">About</a>
                 <a href="#features" class="nav-link text-lg text-[#1F2937]">Features</a>
@@ -155,33 +206,45 @@
                 <a href="#mission" class="nav-link text-lg text-[#1F2937]">Mission</a>
                 <a href="#contact" class="nav-link text-lg text-[#1F2937]">Contact</a>
             </div>
-            <button class="md:hidden modern-hamburger text-[#1F2937] justify-self-end" id="mobileMenuButton" aria-label="Open menu">
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-                    <rect x="4" y="6" width="16" height="2" rx="1" fill="#1F2937"/>
-                    <rect x="4" y="11" width="16" height="2" rx="1" fill="#1F2937"/>
-                    <rect x="4" y="16" width="10" height="2" rx="1" fill="#1F2937"/>
-                </svg>
-            </button>
+            <div class="flex items-center justify-end">
+                <button class="md:hidden modern-hamburger text-[#1F2937]" id="mobileMenuButton" aria-label="Open menu">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                        <rect x="4" y="6" width="16" height="2" rx="1" fill="#1F2937"/>
+                        <rect x="4" y="11" width="16" height="2" rx="1" fill="#1F2937"/>
+                        <rect x="4" y="16" width="10" height="2" rx="1" fill="#1F2937"/>
+                    </svg>
+                </button>
+            </div>
         </nav>
         <!-- Mobile Menu -->
-        <div class="md:hidden hidden bg-white w-full absolute top-[80px] left-0 shadow-lg" id="mobileMenu">
-            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
-                <a href="#home" class="text-[#4B5563] hover:text-[#2563EB] transition-colors text-lg py-2">Home</a>
-                <a href="#about" class="text-[#4B5563] hover:text-[#2563EB] transition-colors text-lg py-2">About</a>
-                <a href="#features" class="text-[#4B5563] hover:text-[#2563EB] transition-colors text-lg py-2">Features</a>
-                <a href="#team" class="text-[#4B5563] hover:text-[#2563EB] transition-colors text-lg py-2">Team</a>
-                <a href="#mission" class="text-[#4B5563] hover:text-[#2563EB] transition-colors text-lg py-2">Mission</a>
-                <a href="#contact" class="text-[#4B5563] hover:text-[#2563EB] transition-colors text-lg py-2">Contact</a>
+        <div class="md:hidden sleek-mobile-menu hidden w-full absolute top-[80px] left-0 z-50" id="mobileMenu">
+            <button class="close-btn" id="closeMobileMenu" aria-label="Close menu">
+                <svg class="w-6 h-6" fill="none" stroke="#1F2937" stroke-width="2.2" viewBox="0 0 24 24">
+                    <line x1="6" y1="6" x2="18" y2="18" stroke-linecap="round"/>
+                    <line x1="6" y1="18" x2="18" y2="6" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <div class="container mx-auto px-4 py-6 flex flex-col items-center">
+                <div class="w-full text-center text-base text-[#4B5563] mb-4 font-medium">The student-only marketplace for campus life.</div>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#features">Features</a>
+                <a href="#team">Team</a>
+                <a href="#mission">Mission</a>
+                <a href="#contact">Contact</a>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center justify-center pt-[80px] md:pt-[100px] px-6 md:px-12 relative overflow-hidden">
+    <section id="home" class="hero-gradient min-h-screen flex items-center justify-center pt-[80px] md:pt-[100px] px-6 md:px-12 relative overflow-hidden">
         <div class="container mx-auto max-w-4xl text-center relative z-10" data-aos="fade-up">
-            <h2 class="text-7xl md:text-[120px] font-bold mb-8 text-[#1F2937] tracking-tight">Zellit</h2>
+            <h2 class="text-7xl md:text-[120px] font-bold mb-8 flex items-center justify-center tracking-tight">
+                <img src="logo4.png" alt="Zellit Logo" class="inline-block align-middle" style="height: 1.2em; width: auto; display: inline; vertical-align: middle; transform: rotate(-15deg);">
+                <span style="color: #FFFAED; letter-spacing: -0.01em; font-family: 'Nunito', sans-serif; font-weight: 600; margin-left: -0.08em;">ellit</span>
+            </h2>
             
-            <h1 class="text-4xl md:text-[52px] font-bold mb-6 text-[#1F2937] leading-tight">
+            <h1 class="text-2xl md:text-3xl font-medium mb-2 text-[#1F2937] leading-tight">
                 The student-only marketplace for campus life.
             </h1>
             
@@ -202,9 +265,8 @@
     <!-- About Section -->
     <section id="about" class="section-padding bg-white" data-aos="fade-up">
         <div class="container mx-auto px-6 md:px-16 max-w-[1200px]">
-            <h2 class="text-2xl md:text-[32px] font-bold text-center text-[#1F2937] mb-6">
-                What is Zellit?
-            </h2>
+            <h2 class="text-2xl md:text-[32px] font-bold text-center text-[#1F2937] mb-2">What is Zellit?</h2>
+            <div class="mx-auto mb-6 h-1 bg-[var(--color-accent)] rounded-full" style="width: 180px;"></div>
             
             <p class="text-base md:text-lg text-[#4B5563] max-w-[650px] mx-auto text-center">
                 Zellit is a mobile-first marketplace built exclusively for college students. By requiring .edu email verification and geofencing each campus, Zellit creates a trusted, student-only environment to buy and sell everything from textbooks to dorm furniture. It's Craigslist, reinvented for Gen Z — safer, simpler, and made just for your school.
@@ -215,7 +277,8 @@
     <!-- Features Section -->
     <section id="features" class="section-padding bg-[#F9FAFB]" data-aos="fade-up">
         <div class="container mx-auto px-6 md:px-16 max-w-[1200px]">
-            <h2 class="text-2xl md:text-[32px] font-bold text-center text-[#1F2937] mb-12 border-b-4 border-[var(--color-accent)] inline-block pb-2">Key Features</h2>
+            <h2 class="text-2xl md:text-[32px] font-bold text-center text-[#1F2937] mb-2">Key Features</h2>
+            <div class="mx-auto mb-12 h-1 bg-[var(--color-accent)] rounded-full" style="width: 160px;"></div>
 
             <div class="grid md:grid-cols-3 gap-6 md:gap-8">
                 <!-- Feature 1: Verified Access -->
@@ -257,7 +320,8 @@
     <!-- Prototype Showcase Section -->
     <section class="py-20 bg-white">
         <div class="container mx-auto px-6 md:px-16 max-w-[1200px]">
-            <h2 class="text-2xl md:text-[32px] font-bold text-center text-[#1F2937] mb-4 border-b-4 border-[var(--color-accent)] inline-block pb-2">See Zellit in Action</h2>
+            <h2 class="text-2xl md:text-[32px] font-bold text-center text-[#1F2937] mb-2">See Zellit in Action</h2>
+            <div class="mx-auto mb-4 h-1 bg-[var(--color-accent)] rounded-full" style="width: 220px;"></div>
             <p class="text-base md:text-lg text-[#4B5563] text-center max-w-2xl mx-auto mb-8">
                 Get a sneak peek at our student-friendly marketplace app. Simple, secure, and made just for campus life.
             </p>
@@ -421,7 +485,8 @@
     <!-- Team Section -->
     <section id="team" class="section-padding bg-[#F9FAFB]" data-aos="fade-up">
         <div class="container mx-auto px-6 md:px-16 max-w-6xl">
-            <h2 class="text-2xl md:text-3xl font-bold text-center text-[#1F2937] mb-4 border-b-4 border-[var(--color-accent)] inline-block pb-2">Meet the Founders</h2>
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-[#1F2937] mb-2">Meet the Founders</h2>
+            <div class="mx-auto mb-4 h-1 bg-[var(--color-accent)] rounded-full" style="width: 180px;"></div>
             <p class="text-base md:text-lg text-[#4B5563] text-center max-w-2xl mx-auto mb-12">
                 Zellit was built by students who wanted a safer, smarter way to resell on campus. From code to campus flyers — this team does it all.
             </p>
@@ -433,7 +498,7 @@
                     <h3 class="text-xl font-semibold text-center mt-4 text-[#1F2937]">Etornam Agbemabiese</h3>
                     <p class="text-sm text-center text-[#4B5563]">Chief Executive Officer</p>
                     <p class="text-sm text-center text-[#4B5563]">UNC Chapel Hill - Business Admin, Computer Science</p>
-                    <p class="text-sm italic text-center mt-2 text-[#4B5563]">"Built by students. For students."</p>
+                    <p class="text-sm italic text-center max-w-xs mx-auto mt-2 text-[#4B5563]">"Built by students. For students."</p>
                 </div>
 
                 <!-- Developer Team -->
@@ -442,7 +507,7 @@
                     <h3 class="text-xl font-semibold text-center mt-4 text-[#1F2937]">Saksham Rustagi</h3>
                     <p class="text-sm text-center text-[#4B5563]">Chief Technology Officer</p>
                     <p class="text-sm text-center text-[#4B5563]">UNC Chapel Hill - Computer Science, Business</p>
-                    <p class="text-sm italic text-center mt-2 text-[#4B5563]">"No downtime. No nonsense."</p>
+                    <p class="text-sm italic text-center max-w-xs mx-auto mt-2 text-[#4B5563]">"No downtime. No nonsense."</p>
                 </div>
 
                 <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
@@ -450,7 +515,7 @@
                     <h3 class="text-xl font-semibold text-center mt-4 text-[#1F2937]">Shreejal Paudel</h3>
                     <p class="text-sm text-center text-[#4B5563]">Chief Product Officer</p>
                     <p class="text-sm text-center text-[#4B5563]">UNC Chapel Hill - Computer Science</p>
-                    <p class="text-sm italic text-center mt-2 text-[#4B5563]">"Campus resale should be click-and-done."</p>
+                    <p class="text-sm italic text-center max-w-xs mx-auto mt-2 text-[#4B5563]">"Campus resale should be click-and-done."</p>
                 </div>
 
                 <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
@@ -458,7 +523,7 @@
                     <h3 class="text-xl font-semibold text-center mt-4 text-[#1F2937]">Joseph Warioba</h3>
                     <p class="text-sm text-center text-[#4B5563]">Chief Marketing Officer</p>
                     <p class="text-sm text-center text-[#4B5563]">UNC Chapel Hill - Biochemistry</p>
-                    <p class="text-sm italic text-center mt-2 text-[#4B5563]">"Turning heads on campus — and online."</p>
+                    <p class="text-sm italic text-center max-w-xs mx-auto mt-2 text-[#4B5563]">"Turning heads on campus — and online."</p>
                 </div>
 
                 <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
@@ -466,15 +531,15 @@
                     <h3 class="text-xl font-semibold text-center mt-4 text-[#1F2937]">Apurwa Khanal</h3>
                     <p class="text-sm text-center text-[#4B5563]">Software Engineer</p>
                     <p class="text-sm text-center text-[#4B5563]">UNC Chapel Hill - Computer Science</p>
-                    <p class="text-sm italic text-center mt-2 text-[#4B5563]">"If it's not slick, I don't ship it."</p>
+                    <p class="text-sm italic text-center max-w-xs mx-auto mt-2 text-[#4B5563]">"If it's not slick, I don't ship it."</p>
                 </div>
 
                 <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
                     <img src="info/nicole-headshot.jpeg" alt="Nicole Tan" class="rounded-full w-36 h-36 mx-auto object-cover">
                     <h3 class="text-xl font-semibold text-center mt-4 text-[#1F2937]">Nicole Tan</h3>
                     <p class="text-sm text-center text-[#4B5563]">Software Engineer</p>
-                    <p class="text-sm text-center text-[#4B5563]">NC State University - Computer Science, Graphic Comm</p>
-                    <p class="text-sm italic text-center mt-2 text-[#4B5563]">"Making Zellit smooth behind the scenes."</p>
+                    <p class="text-sm text-center text-[#4B5563]">NC State University - Computer Science, Graphic Communications</p>
+                    <p class="text-sm italic text-center max-w-xs mx-auto mt-2 text-[#4B5563]">"Making Zellit smooth behind the scenes."</p>
                 </div>
 
                 <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
@@ -482,15 +547,15 @@
                     <h3 class="text-xl font-semibold text-center mt-4 text-[#1F2937]">Ahmed Abnowf</h3>
                     <p class="text-sm text-center text-[#4B5563]">Secretary</p>
                     <p class="text-sm text-center text-[#4B5563]">UNC Chapel Hill - Info Science, Public Policy</p>
-                    <p class="text-sm italic text-center mt-2 text-[#4B5563]">"Keeping the gears running clean."</p>
+                    <p class="text-sm italic text-center max-w-xs mx-auto mt-2 text-[#4B5563]">"Keeping the gears running clean."</p>
                 </div>
 
                 <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
-                    <img src="info/lydia-headshot.jpeg" alt="Xinyi (Lydia) Chen" class="rounded-full w-36 h-36 mx-auto object-cover">
+                    <img src="lydia.JPEG" alt="Xinyi (Lydia) Chen" class="rounded-full w-36 h-36 mx-auto object-cover">
                     <h3 class="text-xl font-semibold text-center mt-4 text-[#1F2937]">Xinyi (Lydia) Chen</h3>
                     <p class="text-sm text-center text-[#4B5563]">Branding Specialist</p>
                     <p class="text-sm text-center text-[#4B5563]">UNC Chapel Hill - Media & Journalism, Pre-Law</p>
-                    <p class="text-sm italic text-center mt-2 text-[#4B5563]">"Making Zellit unforgettable."</p>
+                    <p class="text-sm italic text-center max-w-xs mx-auto mt-2 text-[#4B5563]">"Making Zellit unforgettable."</p>
                 </div>
 
                 <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
@@ -498,7 +563,7 @@
                     <h3 class="text-xl font-semibold text-center mt-4 text-[#1F2937]">Monica Bach</h3>
                     <p class="text-sm text-center text-[#4B5563]">Marketing Specialist</p>
                     <p class="text-sm text-center text-[#4B5563]">UNC Chapel Hill - Advertising/PR, Statistics</p>
-                    <p class="text-sm italic text-center mt-2 text-[#4B5563]">"Spreading the word, one campus at a time."</p>
+                    <p class="text-sm italic text-center max-w-xs mx-auto mt-2 text-[#4B5563]">"Spreading the word, one campus at a time."</p>
                 </div>
             </div>
         </div>
@@ -520,7 +585,9 @@
         <div class="container mx-auto px-4 md:px-8">
             <div class="grid md:grid-cols-3 gap-8">
                 <div>
-                    <img src="logo4.png" alt="Zellit Logo" class="h-24 w-auto mb-4">
+                    <div class="inline-block bg-white rounded-2xl p-4 shadow-lg mb-4">
+                        <img src="logo4.png" alt="Zellit Logo" class="h-24 w-auto">
+                    </div>
                 </div>
                 <div class="md:col-span-2">
                     <div class="grid md:grid-cols-2 gap-8">
@@ -569,20 +636,24 @@
             }
         });
 
-        // Mobile Menu Toggle
+        // Sleek Mobile Menu Toggle
         const mobileMenuButton = document.getElementById('mobileMenuButton');
         const mobileMenu = document.getElementById('mobileMenu');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
         
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
+        function openMobileMenu() {
+            mobileMenu.classList.remove('hidden');
+            setTimeout(() => mobileMenu.classList.add('open'), 10);
+        }
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+        }
+        mobileMenuButton.addEventListener('click', openMobileMenu);
+        closeMobileMenu.addEventListener('click', closeMenu);
         // Close mobile menu when clicking a link
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
         });
 
         // Gallery Navigation
