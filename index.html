@@ -194,11 +194,11 @@
 <body class="bg-[#FFFAED]">
     <!-- Header/Navigation -->
     <header class="fixed w-full z-50 modern-header" id="mainHeader">
-        <nav class="container mx-auto px-6 md:px-12 h-[80px] md:h-[100px] grid grid-cols-3 items-center">
-            <div class="flex items-center justify-start">
+        <nav class="container mx-auto px-6 md:px-12 h-[80px] md:h-[100px] grid grid-cols-2 md:grid-cols-3 items-center">
+            <div class="flex items-center justify-start w-full">
                 <img src="logo4.png" alt="Zellit Logo" class="logo">
             </div>
-            <div class="hidden md:flex items-center space-x-4 justify-center">
+            <div class="hidden md:flex items-center space-x-8 justify-center">
                 <a href="#home" class="nav-link text-lg text-[#1F2937]">Home</a>
                 <a href="#about" class="nav-link text-lg text-[#1F2937]">About</a>
                 <a href="#features" class="nav-link text-lg text-[#1F2937]">Features</a>
@@ -206,7 +206,7 @@
                 <a href="#mission" class="nav-link text-lg text-[#1F2937]">Mission</a>
                 <a href="#contact" class="nav-link text-lg text-[#1F2937]">Contact</a>
             </div>
-            <div class="flex items-center justify-end">
+            <div class="flex items-center justify-end w-full">
                 <button class="md:hidden modern-hamburger text-[#1F2937]" id="mobileMenuButton" aria-label="Open menu">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
                         <rect x="4" y="6" width="16" height="2" rx="1" fill="#1F2937"/>
@@ -225,7 +225,6 @@
                 </svg>
             </button>
             <div class="container mx-auto px-4 py-6 flex flex-col items-center">
-                <div class="w-full text-center text-base text-[#4B5563] mb-4 font-medium">The student-only marketplace for campus life.</div>
                 <a href="#home">Home</a>
                 <a href="#about">About</a>
                 <a href="#features">Features</a>
@@ -237,18 +236,18 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-gradient min-h-screen flex items-center justify-center pt-[80px] md:pt-[100px] px-6 md:px-12 relative overflow-hidden">
+    <section id="home" class="hero-gradient min-h-screen flex items-center justify-center pt-2 md:pt-6 px-6 md:px-12 relative overflow-hidden">
         <div class="container mx-auto max-w-4xl text-center relative z-10" data-aos="fade-up">
             <h2 class="text-7xl md:text-[120px] font-bold mb-8 flex items-center justify-center tracking-tight">
-                <img src="logo4.png" alt="Zellit Logo" class="inline-block align-middle" style="height: 1.2em; width: auto; display: inline; vertical-align: middle; transform: rotate(-15deg);">
+                <img src="logo4.png" alt="Zellit Logo" class="inline-block align-middle" style="height: 1.4em; width: auto; display: inline; vertical-align: middle; transform: rotate(-15deg);">
                 <span style="color: #FFFAED; letter-spacing: -0.01em; font-family: 'Nunito', sans-serif; font-weight: 600; margin-left: -0.08em;">ellit</span>
             </h2>
             
-            <h1 class="text-2xl md:text-3xl font-medium mb-2 text-[#1F2937] leading-tight">
+            <h1 class="text-2xl md:text-3xl font-medium mb-1 text-[#1F2937] leading-tight">
                 The student-only marketplace for campus life.
             </h1>
             
-            <p class="text-xl md:text-[26px] mb-12 text-[#4B5563] max-w-[700px] mx-auto">
+            <p class="text-xl md:text-[22px] mb-8 text-[#4B5563] max-w-[700px] mx-auto">
                 Buy, sell, and save — with classmates, not strangers.
             </p>
         </div>
